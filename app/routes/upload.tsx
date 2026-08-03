@@ -1,36 +1,15 @@
-import { useState, type SubmitEvent } from "react";
 import Header from "~/components/Header";
 import UploadForm from "~/components/UploadForm";
+import { UPLOAD_ASSETS } from "~/consts";
+import { useUploadResume } from "~/hooks/use-upload-resume.hook";
 
 const Upload = () => {
-  const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  const [statusText, setStatusText] = useState<string>("");
-  const [file, setFile] = useState<File | null>(null);
-
-  const handleFileSelect = (file: File | null) => {
-    setFile(file);
-  };
-
-  // FIXME: Replace console.log to a server request
-  const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    const form = e.currentTarget.closest("form");
-
-    if (!form) return;
-
-    const formData = new FormData(form);
-
-    const companyName = formData.get("company-name");
-    const jobTitle = formData.get("job-title");
-    const jobDescription = formData.get("job-description");
-
-    console.log(
-      "🚀 ~ Upload ~ handleSubmit ~ jobTitle:",
-      jobDescription,
-      jobTitle,
-      companyName,
-    );
-  };
+  const {
+    isProcessing,
+    statusText,
+    handleFileSelect,
+    handleAnalyzeResume,
+  } = useUploadResume();
 
   return (
     <main className="bg-[url('/images/bg-main.svg')] bg-cover">
@@ -44,20 +23,19 @@ const Upload = () => {
             <>
               <h2>{statusText}</h2>
               <img
-                src="/images/resume-scan.gif"
-                alt="Resume scan icon"
+                src={UPLOAD_ASSETS.SCAN_GIF}
+                alt="Resume scan animation"
                 className="w-full"
               />
             </>
           ) : (
-            <>
-              <h2>Drop your resume for an ATS score and improvement tips</h2>
-            </>
+            <h2>Drop your resume for an ATS score and improvement tips</h2>
           )}
+
           {!isProcessing && (
             <UploadForm
-              handleSubmit={handleSubmit}
-              handleFileSelect={handleFileSelect}
+              onSubmit={handleAnalyzeResume}
+              onFileSelect={handleFileSelect}
             />
           )}
         </div>
