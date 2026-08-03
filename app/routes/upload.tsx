@@ -1,7 +1,7 @@
 import Header from "~/components/Header";
 import UploadForm from "~/components/UploadForm";
 import { UPLOAD_ASSETS } from "~/consts";
-import { useUploadResume } from "~/hooks/use-upload-resume.hook";
+import { useUploadResume } from "~/hooks/useUploadResume.hook";
 
 const Upload = () => {
   const {
