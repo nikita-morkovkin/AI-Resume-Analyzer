@@ -1,4 +1,6 @@
 import ResumeList from "~/components/ResumeList";
+import Header from "~/components/Header";
+import WelcomeSection from "~/components/WelcomeSection";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -11,6 +13,8 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+      <Header />
+      <WelcomeSection />
       <ResumeList />
     </main>
   );
