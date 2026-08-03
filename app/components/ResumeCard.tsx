@@ -21,9 +21,9 @@ const ResumeCard = ({ resume }: ResumeCardProps) => {
         className="resume-card animate-in fade-in duration-1000"
         to={`/resume/${id}`}
       >
-        <header className="resume-card-header">
+        <header className="resume-card-header ml-2.5">
           <div className="flex flex-col gap-2">
-            <h3 className="text-black font-bold wrap-break-word">
+            <h3 className="text-black font-bold text-xl wrap-break-word">
               {companyName}
             </h3>
 

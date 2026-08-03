@@ -9,6 +9,7 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@heyputer/puter.js": "^2.6.0",
     "@react-router/node": "^8",
     "@react-router/serve": "^8",
     "clsx": "^2.1.1",
