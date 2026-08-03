@@ -1,3 +1,4 @@
+import ResumeList from "~/components/ResumeList";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -8,5 +9,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <></>;
+  return (
+    <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+      <ResumeList />
+    </main>
+  );
 }
